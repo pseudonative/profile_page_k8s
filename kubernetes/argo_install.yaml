@@ -20918,7 +20918,13 @@ metadata:
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
   name: argocd-server
+  annotations:
+    # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-east-1:520291287938:certificate/b349a784-4454-4f01-99bd-f92b0b44a639"
+    # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+    # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    # service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
 spec:
+  type: LoadBalancer
   ports:
   - name: http
     port: 80
@@ -21708,6 +21714,9 @@ spec:
       containers:
       - args:
         - /usr/local/bin/argocd-server
+        # - --insecure
+        # - --grpc-web
+        # - --plaintext
         env:
         - name: ARGOCD_SERVER_INSECURE
           valueFrom:
