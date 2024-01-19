@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: profile-page
+  name: profile-app
 spec:
   project: default
   source:
@@ -9,7 +9,7 @@ spec:
     path: kubernetes
     targetRevision: HEAD
   destination:
-    server: https://580F881B73483A3D9FC8B3BC89782C9C.gr7.us-east-1.eks.amazonaws.com
+    server: https://kubernetes.default.svc
     namespace: default
   syncPolicy:
     automated:
