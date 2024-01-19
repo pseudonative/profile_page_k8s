@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: profile-page
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pseudonative/profile_page_k8s.git
+    path: kubernetes
+    targetRevision: HEAD
+  destination:
+    server: https://580F881B73483A3D9FC8B3BC89782C9C.gr7.us-east-1.eks.amazonaws.com
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
